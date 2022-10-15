@@ -1,11 +1,9 @@
 enum Pattern
 {
-    NONE,
-    RAINBOW_CYCLE,
-    THEATER_CHASE,
-    COLOR_WIPE,
-    SCANNER,
-    FADE
+    BLUE_WHITE,
+    RED_WHITE,
+    WHITE,
+    RAINBOW_CYCLE
 };
 
 Pattern activePattern;
@@ -79,18 +77,12 @@ void updateBackgroundEffect()
         case RAINBOW_CYCLE:
             RainbowCycleNonBlocking();
             break;
-        // case THEATER_CHASE:
-        //     TheaterChaseUpdate();
-        //     break;
-        // case COLOR_WIPE:
-        //     ColorWipeUpdate();
-        //     break;
-        // case SCANNER:
-        //     ScannerUpdate();
-        //     break;
-        // case FADE:
-        //     FadeUpdate();
-        //     break;
+        case RED_WHITE:
+            colorWheelNonBlocking(colorRed, colorWhite);
+            break;
+        case WHITE:
+            colorWheelNonBlocking(colorWhite, colorBlack);
+            break;
         default:
             colorWheelNonBlocking(colorBlue, colorWhite);
             break;
@@ -105,9 +97,23 @@ void setEffectToRainbow()
     nextUpdate = 0;
 }
 
-void setEffectToDefault()
+void setEffectToBlueWhite()
 {
-    activePattern = NONE;
+    activePattern = BLUE_WHITE;
+    actualTick = 0;
+    nextUpdate = 0;
+}
+
+void setEffectToRedWhite()
+{
+    activePattern = RED_WHITE;
+    actualTick = 0;
+    nextUpdate = 0;
+}
+
+void setEffectToWhite()
+{
+    activePattern = WHITE;
     actualTick = 0;
     nextUpdate = 0;
 }

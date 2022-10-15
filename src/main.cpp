@@ -8,7 +8,9 @@
 #define NUM_LED 300 // Anzahl der LEDs
 #define LED_PIN 5   // Anschlusspin des LED-Streifens
 
-#define ANIMATION_TIME 10000 // Dauer der Animation in Milisekunden (1000 = 1 Sekunde)
+#define ANIMATION_TIME 10000    // Dauer der Animation in Milisekunden (1000 = 1 Sekunde)
+#define DEFAULT_STROBO_LENGTH 5 // Standard-Dauer für Effekte in Sekunden
+#define DEFAULT_EFFECT_LENGTH 7 // Standard-Dauer für Effekte in Sekunden
 
 WiFiClient wiFiClient;
 String ircChannel = "#" + twitchChannelName;
@@ -100,107 +102,127 @@ void callback(IRCMessage ircMessage)
     }
     else if (ircMessage.text == "!strobo" || ircMessage.text == "!stroboweiß")
     {
-      strobe(colorWhite, colorBlack, 5);
+      strobe(colorWhite, colorBlack, DEFAULT_STROBO_LENGTH);
     }
     else if (ircMessage.text == "!stroborot")
     {
-      strobe(colorRed, colorBlack, 5);
+      strobe(colorRed, colorBlack, DEFAULT_STROBO_LENGTH);
     }
-    else if (ircMessage.text == "!strobogrün")
+    else if (ircMessage.text == "!strobogrün" || ircMessage.text == "!strobogruen")
     {
-      strobe(colorGreen, colorBlack, 5);
+      strobe(colorGreen, colorBlack, DEFAULT_STROBO_LENGTH);
     }
     else if (ircMessage.text == "!stroboblau")
     {
-      strobe(colorBlue, colorBlack, 5);
+      strobe(colorBlue, colorBlack, DEFAULT_STROBO_LENGTH);
     }
     else if (ircMessage.text == "!stroborosa")
     {
-      strobe(colorRose, colorBlack, 5);
+      strobe(colorRose, colorBlack, DEFAULT_STROBO_LENGTH);
     }
     else if (ircMessage.text == "!strobogelb")
     {
-      strobe(colorYellow, colorBlack, 5);
+      strobe(colorYellow, colorBlack, DEFAULT_STROBO_LENGTH);
     }
     else if (ircMessage.text == "!stroboorange")
     {
-      strobe(colorOrange, colorBlack, 5);
+      strobe(colorOrange, colorBlack, DEFAULT_STROBO_LENGTH);
     }
     else if (ircMessage.text == "!strobolila")
     {
-      strobe(colorPurple, colorBlack, 5);
+      strobe(colorPurple, colorBlack, DEFAULT_STROBO_LENGTH);
     }
-    else if (ircMessage.text == "!stroboblauweiß")
+    else if (ircMessage.text == "!stroboblauweiß" || ircMessage.text == "!stroboblauweis")
     {
-      strobe(colorBlue, colorWhite, 5);
+      strobe(colorBlue, colorWhite, DEFAULT_STROBO_LENGTH);
     }
     else if (ircMessage.text == "!strobobunt")
     {
-      strobeColorful(5);
+      strobeColorful(DEFAULT_STROBO_LENGTH);
     }
     else if (ircMessage.text == "!police" || ircMessage.text == "!911")
     {
-      police(5);
+      police(DEFAULT_EFFECT_LENGTH);
     }
-    else if (ircMessage.text == "!blauweiß")
+    else if (ircMessage.text == "!blauweiß" || ircMessage.text == "!blauweis")
     {
-      colorWheel(colorBlue, colorWhite, 5);
+      colorWheel(colorBlue, colorWhite, DEFAULT_EFFECT_LENGTH);
     }
     else if (ircMessage.text == "!gelbblau")
     {
-      colorWheel(colorYellow, colorBlue, 5);
+      colorWheel(colorYellow, colorBlue, DEFAULT_EFFECT_LENGTH);
     }
-    else if (ircMessage.text == "!rotweiß")
+    else if (ircMessage.text == "!rotweiß" || ircMessage.text == "!rotweis")
     {
-      colorWheel(colorRed, colorWhite, 5);
+      colorWheel(colorRed, colorWhite, DEFAULT_EFFECT_LENGTH);
     }
-    else if (ircMessage.text == "!grünrosa")
+    else if (ircMessage.text == "!grünrosa" || ircMessage.text == "!grunrosa" || ircMessage.text == "!gruenrosa")
     {
-      colorWheel(colorGreen, colorRose, 5);
+      colorWheel(colorGreen, colorRose, DEFAULT_EFFECT_LENGTH);
     }
-    else if (ircMessage.text == "!grünlila")
+    else if (ircMessage.text == "!grünlila" || ircMessage.text == "!grunlila" || ircMessage.text == "!gruenlila")
     {
-      colorWheel(colorGreen, colorPurple, 5);
+      colorWheel(colorGreen, colorPurple, DEFAULT_EFFECT_LENGTH);
     }
-    else if (ircMessage.text == "!weiß")
+    else if (ircMessage.text == "!grünblau" || ircMessage.text == "!grunblau" || ircMessage.text == "!gruenblau")
     {
-      colorWheel(colorWhite, colorBlack, 5);
+      colorWheel(colorGreen, colorBlue, DEFAULT_EFFECT_LENGTH);
+    }
+    else if (ircMessage.text == "!grüngelb" || ircMessage.text == "!grungelb" || ircMessage.text == "!gruengelb")
+    {
+      colorWheel(colorGreen, colorYellow, DEFAULT_EFFECT_LENGTH);
+    }
+    else if (ircMessage.text == "!grünweiß" || ircMessage.text == "!grünweis" || ircMessage.text == "!grunweiß" || ircMessage.text == "!grunweis" || ircMessage.text == "!gruenweiß" || ircMessage.text == "!gruenweis")
+    {
+      colorWheel(colorGreen, colorYellow, DEFAULT_EFFECT_LENGTH);
+    }
+    else if (ircMessage.text == "!weiß" || ircMessage.text == "!weis")
+    {
+      colorWheel(colorWhite, colorBlack, DEFAULT_EFFECT_LENGTH);
     }
     else if (ircMessage.text == "!rot")
     {
-      colorWheel(colorRed, colorBlack, 5);
+      colorWheel(colorRed, colorBlack, DEFAULT_EFFECT_LENGTH);
     }
-    else if (ircMessage.text == "!grün")
+    else if (ircMessage.text == "!grün" || ircMessage.text == "!grun" || ircMessage.text == "!gruen")
     {
-      colorWheel(colorGreen, colorBlack, 5);
+      colorWheel(colorGreen, colorBlack, DEFAULT_EFFECT_LENGTH);
     }
     else if (ircMessage.text == "!blau")
     {
-      colorWheel(colorBlue, colorBlack, 5);
+      colorWheel(colorBlue, colorBlack, DEFAULT_EFFECT_LENGTH);
     }
     else if (ircMessage.text == "!rosa")
     {
-      colorWheel(colorRose, colorBlack, 5);
+      colorWheel(colorRose, colorBlack, DEFAULT_EFFECT_LENGTH);
     }
     else if (ircMessage.text == "!gelb")
     {
-      colorWheel(colorYellow, colorBlack, 5);
+      colorWheel(colorYellow, colorBlack, DEFAULT_EFFECT_LENGTH);
     }
     else if (ircMessage.text == "!orange")
     {
-      colorWheel(colorOrange, colorBlack, 5);
+      colorWheel(colorOrange, colorBlack, DEFAULT_EFFECT_LENGTH);
     }
     else if (ircMessage.text == "!lila")
     {
-      colorWheel(colorPurple, colorBlack, 5);
+      colorWheel(colorPurple, colorBlack, DEFAULT_EFFECT_LENGTH);
     }
-    else if (ircMessage.text == "!effectRainbow")
+    else if (ircMessage.text == "!effektRegenbogen")
     {
       setEffectToRainbow();
     }
-    else if (ircMessage.text == "!effectDefault")
+    else if (ircMessage.text == "!effektRotWeiß")
     {
-      setEffectToDefault();
+      setEffectToRedWhite();
+    }
+    else if (ircMessage.text == "!effektWeiß")
+    {
+      setEffectToWhite();
+    }
+    else if (ircMessage.text == "!effektDefault" || ircMessage.text == "!effektBlauWeiß")
+    {
+      setEffectToBlueWhite();
     }
     return;
   }
@@ -210,8 +232,8 @@ void setup()
 {
   led.begin();           // Einrichten des LED-Outputs
   led.setBrightness(64); // Maximale Helligkeit
-  led.clear();
-  led.show();
+  // led.clear();
+  // led.show();
 
   connectWifi();
 
